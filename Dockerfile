@@ -6,11 +6,10 @@ WORKDIR /apps/zipcode
 
 ARG artifact=zipcode.zip
 
-COPY build/distributions/${artifact} .
-RUN unzip ${artifact} && mv zipcode/* . && rm -rf ${artifact} zipcode/ && chmod +x bin/zipcode
+RUN unzip build/distributions/${artifact} && mv zipcode-*/* . && rm -rf zipcode-*/ && chmod +x bin/zipcode
 
 EXPOSE 8080
 
 ENV BADR_APP_ARGS prod
 ENV BADR_JAVA_ARGS "-Xms256m -Xmx1024m"
-CMD [ "./bin/webstore_all_in_one", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
+CMD [ "./bin/zipcode", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
