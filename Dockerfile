@@ -12,4 +12,4 @@ RUN unzip ${artifact}.zip && mv ${artifact}/* . && rm -rf ${artifact}/ && chmod 
 
 EXPOSE 2001
 
-CMD [ "./bin/zipcode", "-Xms256m -Xmx1024m --spring.profiles.active=prod" ]
+CMD [ "./bin/zipcode", "-Xmx1024m", "--spring.profiles.active=prod" ]
