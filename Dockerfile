@@ -4,12 +4,14 @@ RUN yum update -y && yum install unzip -y
 
 WORKDIR /apps/zipcode
 
-ARG artifact=zipcode.zip
+ARG artifact=zipcode-0.0.1-SNAPSHOT
+ARG appname=zipcode
 
-RUN unzip build/distributions/${artifact} && mv zipcode-*/* . && rm -rf zipcode-*/ && chmod +x bin/zipcode
+COPY build/distributions/${artifact}.zip .
+RUN unzip ${artifact}.zip && mv ${artifact}/* . && rm -rf ${artifact}/ && chmod +x bin/${appname}
 
-EXPOSE 8080
+EXPOSE 2001
 
 ENV BADR_APP_ARGS prod
 ENV BADR_JAVA_ARGS "-Xms256m -Xmx1024m"
-CMD [ "./bin/zipcode", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
+CMD [ "./bin/${appname}", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
