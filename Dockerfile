@@ -12,6 +12,6 @@ RUN unzip ${artifact}.zip && mv ${artifact}/* . && rm -rf ${artifact}/ && chmod 
 
 EXPOSE 2001
 
-ENV BADR_APP_ARGS prod
+ENV BADR_APP_ARGS "prod"
 ENV BADR_JAVA_ARGS "-Xms256m -Xmx1024m"
-CMD [ "./bin/${appname}", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
+CMD [ "./bin/zipcode", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
