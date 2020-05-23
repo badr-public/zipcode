@@ -1,15 +1,11 @@
-FROM openjdk:14-jdk
-
-RUN yum update -y && yum install unzip -y
+FROM openjdk:14-jdk-alpine
 
 WORKDIR /apps/zipcode
 
-ARG artifact=zipcode-0.0.1-SNAPSHOT
-ARG appname=zipcode
-
-COPY build/distributions/${artifact}.zip .
-RUN unzip ${artifact}.zip && mv ${artifact}/* . && rm -rf ${artifact}/ && chmod +x bin/${appname}
+COPY build/libs/zipcode-0.0.1-SNAPSHOT.jar .
 
 EXPOSE 2001
 
-CMD [ "./bin/zipcode", "-Xmx1024m", "--spring.profiles.active=prod" ]
+ENV BADR_APP_ARGS prod
+ENV BADR_JAVA_ARGS "-Xms256m -Xmx1024m"
+CMD [ "java -jar zipcode-0.0.1-SNAPSHOT.jar", "${BADR_JAVA_ARGS}", "--spring.profiles.active=${BADR_APP_ARGS}" ]
