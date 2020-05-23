@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.2.6.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+    id 'eclipse'
+}
+
+def NEXUS_BADR = 'http://nexus0001p:8081'
+
+group = 'br.com.badr'
+version = '0.0.1-SNAPSHOT'
+
+sourceCompatibility = '14'
+targetCompatibility = '14'
+
+repositories {
+    // mavenCentral()
+    maven {
+        allowInsecureProtocol true
+        url "$NEXUS_BADR/repository/badr_group/"
+    }
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.hibernate:hibernate-core'
+    // Persistence
+    runtimeOnly 'mysql:mysql-connector-java'
+    
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
