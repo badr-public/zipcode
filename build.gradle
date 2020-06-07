@@ -37,7 +37,3 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-
-bootBuildImage {
-	builder = "openjdk:14-jdk"
-}
