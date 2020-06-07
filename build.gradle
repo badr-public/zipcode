@@ -39,5 +39,5 @@ test {
 }
 
 bootBuildImage {
-	builder = "badr/zipcode"
+	builder = "openjdk:14-jdk"
 }
