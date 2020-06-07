@@ -5,7 +5,7 @@ plugins {
     id 'eclipse'
 }
 
-def NEXUS_BADR = 'http://nexus0001p:8081'
+def NEXUS_BADR = 'http://nexus.corp'
 
 group = 'br.com.badr'
 version = '0.0.1-SNAPSHOT'
@@ -17,7 +17,7 @@ repositories {
     // mavenCentral()
     maven {
         allowInsecureProtocol true
-        url "$NEXUS_BADR/repository/badr_group/"
+        url "$NEXUS_BADR/repository/maven-public/"
     }
 }
 
