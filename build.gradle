@@ -19,7 +19,7 @@ repositories {
         allowInsecureProtocol true
         url "$NEXUS_BADR/repository/maven-public/"
     }
-    mavenCentral()
+    //mavenCentral()
 }
 
 dependencies {
