@@ -15,11 +15,11 @@ sourceCompatibility = '14'
 targetCompatibility = '14'
 
 repositories {
-    // mavenCentral()
     maven {
         allowInsecureProtocol true
         url "$NEXUS_BADR/repository/maven-public/"
     }
+    mavenCentral()
 }
 
 dependencies {
