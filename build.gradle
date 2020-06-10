@@ -27,8 +27,10 @@ dependencies {
     //implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.hibernate:hibernate-core'
-    compile 'org.springframework.metrics:spring-metrics:latest.release'
-	compile 'io.prometheus:simpleclient_common:latest.release'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+    implementation 'io.micrometer:micrometer-registry-prometheus'
+    //implementation 'org.springframework.metrics:spring-metrics:latest.release'
+	//implementation 'io.prometheus:simpleclient_common:latest.release'
     // Persistence
     runtimeOnly 'mysql:mysql-connector-java'
     
