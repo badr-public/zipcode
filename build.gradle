@@ -6,7 +6,7 @@ plugins {
     id 'org.sonarqube' version '2.7'
 }
 
-def NEXUS_BADR = 'http://nexus.corp'
+//def NEXUS_BADR = 'http://nexus.corp'
 
 group = 'br.com.badr'
 version = '0.0.1-SNAPSHOT'
@@ -15,11 +15,11 @@ sourceCompatibility = '14'
 targetCompatibility = '14'
 
 repositories {
-    maven {
-        allowInsecureProtocol true
-        url "$NEXUS_BADR/repository/maven-public/"
-    }
-    //mavenCentral()
+    //maven {
+    //    allowInsecureProtocol true
+    //    url "$NEXUS_BADR/repository/maven-public/"
+    //}
+    mavenCentral()
 }
 
 dependencies {
